@@ -1,28 +1,29 @@
 defmodule FootballBuddy.FootballCore.Sources.FootballDataOrg do
   @football_data_org_url "https://api.football-data.org"
 
+  alias FootballBuddy.Helpers.HttpClient
   alias FootballBuddy.FootballCore.Competition
 
   def get_competitions do
-    case HTTPoison.get(competitions_url, headers) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        competitions = body |> json_response() |> Enum.map(&parse_competition/1)
+    case do_get(competitions_url()) do
+      {:ok, %{status_code: 200, body: body}} ->
+        competitions = Enum.map(body, &parse_competition/1)
 
         {:ok, competitions}
-      {:error, %HTTPoison.Error{}} ->
+      {:error, _} ->
         {:error, :service_error}
     end
   end
 
   def get_competition(code) do
-    case HTTPoison.get(competition_url(code), headers) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        competition = body |> json_response() |> parse_competition()
+    case do_get(competition_url(code)) do
+      {:ok, %{status_code: 200, body: body}} ->
+        competition = parse_competition(body)
 
         {:ok, competition}
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
+      {:ok, %{status_code: 404}} ->
         {:ok, :not_found}
-      {:error, %HTTPoison.Error{}} ->
+      {:error, _} ->
         {:error, :service_error}
     end
   end
@@ -36,8 +37,6 @@ defmodule FootballBuddy.FootballCore.Sources.FootballDataOrg do
   defp competition_id_by_code("PPL"), do: 457
   defp competition_id_by_code(_), do: :unknown
 
-  defp json_response(body), do: Poison.decode!(body)
-
   defp parse_competition(data) do
     %Competition{
       name: data["caption"],
@@ -47,6 +46,8 @@ defmodule FootballBuddy.FootballCore.Sources.FootballDataOrg do
       teams_count: data["numberOfTeams"]
     }
   end
+
+  defp do_get(url), do: HttpClient.get(url, headers())
 
   defp headers do
     ["X-Response-Control": "minified"]

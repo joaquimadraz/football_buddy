@@ -4,7 +4,7 @@ defmodule FootballBuddy.FootballCore do
   @default_source FootballDataOrg
 
   def competitions(source \\ @default_source) do
-    case source.get_competitions do
+    case source.get_competitions() do
       {:ok, competitions} -> {:ok, competitions}
       _ -> {:error, {:service_error}}
     end
