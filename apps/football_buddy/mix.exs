@@ -37,7 +37,9 @@ defmodule FootballBuddy.Mixfile do
   defp deps do
     [
       {:postgrex, ">= 0.0.0"},
-      {:ecto, "~> 2.1"}
+      {:ecto, "~> 2.1"},
+      {:httpoison, "~> 0.12"},
+      {:exvcr, "~> 0.8", only: :test},
     ]
   end
 
