@@ -17,7 +17,7 @@ defmodule FootballBuddyWeb.Api.CompetitionController do
         conn
         |> put_status(200)
         |> render("show.json", competition: competition)
-      {:error, reason} ->
+      {:error, _reason} ->
         conn
         |> put_status(503)
         |> render(ErrorView, :"503")
