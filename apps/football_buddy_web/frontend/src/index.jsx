@@ -9,7 +9,7 @@ import '../assets/css'
 import initStore from './data/store'
 
 import App from './components/App'
-import Home from './routes/Home/Home.jsx'
+import HomeContainer from './routes/Home/HomeContainer.jsx'
 
 const store = initStore()
 const awesomeHistory = syncHistoryWithStore(browserHistory, store)
@@ -19,7 +19,7 @@ if (document.getElementById('app')) {
     <Provider store={store} >
       <Router history={awesomeHistory}>
         <Route path="/" component={App}>
-          <IndexRoute component={Home} />
+          <IndexRoute component={HomeContainer} />
         </Route>
       </Router>
     </Provider>,
