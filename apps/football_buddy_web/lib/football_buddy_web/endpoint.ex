@@ -9,7 +9,7 @@ defmodule FootballBuddyWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :football_buddy_web, gzip: false,
-    only_matching: ~w(css fonts images js favicon.ico robots.txt app.bundle)
+    only_matching: ~w(themes fonts images favicon.ico robots.txt app.bundle)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
