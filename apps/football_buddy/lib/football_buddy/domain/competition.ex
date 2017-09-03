@@ -1,4 +1,4 @@
-defmodule FootballBuddy.FootballCore.Competition do
+defmodule FootballBuddy.Competition do
   defstruct [:name,
              :code,
              :year,

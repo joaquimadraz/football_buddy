@@ -1,8 +1,7 @@
 defmodule FootballBuddy.Test.FootballCoreTest do
   use ExUnit.Case
 
-  alias FootballBuddy.FootballCore
-  alias FootballBuddy.FootballCore.Competition
+  alias FootballBuddy.{Competition, FootballCore}
 
   defmodule SourceErrorMock do
     def get_competitions, do: {:error, :something}
@@ -25,7 +24,7 @@ defmodule FootballBuddy.Test.FootballCoreTest do
 
   describe "competitions/0" do
     test "returns error for service error" do
-      assert {:error, {:service_error}} = FootballCore.competitions(SourceErrorMock)
+      assert {:error, :service_error} = FootballCore.competitions(SourceErrorMock)
     end
 
     test "returns competitions" do
@@ -43,7 +42,7 @@ defmodule FootballBuddy.Test.FootballCoreTest do
 
   describe "competition" do
     test "returns error for service error" do
-      assert {:error, {:service_error}} = FootballCore.competition("PL", SourceErrorMock)
+      assert {:error, :service_error} = FootballCore.competition("PL", SourceErrorMock)
     end
 
     test "returns a competition" do

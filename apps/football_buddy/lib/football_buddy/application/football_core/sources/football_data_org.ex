@@ -1,8 +1,8 @@
 defmodule FootballBuddy.FootballCore.Sources.FootballDataOrg do
   @football_data_org_url "https://api.football-data.org"
 
+  alias FootballBuddy.Competition
   alias FootballBuddy.Helpers.HttpClient
-  alias FootballBuddy.FootballCore.Competition
 
   def get_competitions do
     case do_get(competitions_url()) do

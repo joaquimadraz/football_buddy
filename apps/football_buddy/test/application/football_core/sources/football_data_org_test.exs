@@ -2,7 +2,7 @@ defmodule FootballBuddy.Test.FootballCore.Sources.FootballDataOrgTest do
   use ExUnit.Case, async: false
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
-  alias FootballBuddy.FootballCore.Competition
+  alias FootballBuddy.Competition
   alias FootballBuddy.FootballCore.Sources.FootballDataOrg
 
   setup_all do
