@@ -12,7 +12,7 @@ config :football_buddy_web, FootballBuddyWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [node: ["node_modules/.bin/webpack", "--watch", "--display-error-details", "--color", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+                    cd: Path.expand("../frontend", __DIR__)]]
 
 # Watch static and templates for browser reloading.
 config :football_buddy_web, FootballBuddyWeb.Endpoint,
