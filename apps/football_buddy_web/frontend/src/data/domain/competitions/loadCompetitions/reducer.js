@@ -8,7 +8,9 @@ const resetState = state => (
        .setIn(['remoteCall', 'error'], null)
 )
 
-const loadCompetitionsStarted = (state) => resetState(state)
+const loadCompetitionsStarted = (state) => (
+  resetState(state).setIn(['remoteCall', 'loading'], true)
+)
 
 const loadCompetitionsSuccess = (state, { data }) => {
   return data.reduce((newState, competition) => {

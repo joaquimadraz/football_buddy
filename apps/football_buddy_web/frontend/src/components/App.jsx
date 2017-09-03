@@ -1,9 +1,12 @@
 import React from 'react'
+import { Container, Header } from 'semantic-ui-react'
 
 const App = ({ children }) => (
-  <div>
+  <Container>
+    <br />
+    <Header as="h1">Football Buddy</Header>
     {children}
-  </div>
+  </Container>
 )
 
 export default App
