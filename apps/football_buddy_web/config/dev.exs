@@ -11,8 +11,19 @@ config :football_buddy_web, FootballBuddyWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  watchers: [node: ["node_modules/.bin/webpack", "--watch", "--display-error-details", "--color", "--stdin",
+                    cd: Path.expand("../assets", __DIR__)]]
 
+# Watch static and templates for browser reloading.
+config :football_buddy_web, FootballBuddyWeb.Endpoint,
+  live_reload: [
+    patterns: [
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/gettext/.*(po)$},
+      ~r{lib/football_buddy_web/views/.*(ex)$},
+      ~r{lib/football_buddy_web/templates/.*(eex)$}
+    ]
+  ]
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

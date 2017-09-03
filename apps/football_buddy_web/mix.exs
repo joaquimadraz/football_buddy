@@ -41,6 +41,7 @@ defmodule FootballBuddyWeb.Mixfile do
       {:phoenix_html, "~> 2.6"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:football_buddy, in_umbrella: true},
       {:cowboy, "~> 1.0"}
