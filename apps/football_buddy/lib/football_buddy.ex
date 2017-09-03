@@ -1,9 +1,7 @@
 defmodule FootballBuddy do
-  @moduledoc """
-  FootballBuddy keeps the contexts that define your domain
-  and business logic.
+  alias FootballBuddy.FootballCore
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  @moduledoc false
+
+  def get_competitions, do: FootballCore.competitions()
 end

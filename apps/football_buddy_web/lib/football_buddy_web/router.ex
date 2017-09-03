@@ -13,8 +13,11 @@ defmodule FootballBuddyWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  scope "/api", FootballBuddyWeb do
+  scope "/api", FootballBuddyWeb, as: :api do
     pipe_through :api
+
+    resources "/competitions", Api.CompetitionController, param: "code",
+                                                          only: [:index, :show]
   end
 
   scope "/", FootballBuddyWeb do

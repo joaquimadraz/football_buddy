@@ -26,6 +26,10 @@ defmodule FootballBuddyWeb.ConnCase do
     end
   end
 
+  setup_all _ do
+    ExVCR.Config.cassette_library_dir("test/support/vcr_cassettes")
+    :ok
+  end
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(FootballBuddy.Repo)
