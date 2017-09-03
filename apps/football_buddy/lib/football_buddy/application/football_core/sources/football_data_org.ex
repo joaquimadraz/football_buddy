@@ -22,7 +22,9 @@ defmodule FootballBuddy.FootballCore.Sources.FootballDataOrg do
 
         {:ok, competition}
       {:ok, %{status_code: 404}} ->
-        {:ok, :not_found}
+        {:error, :not_found}
+      {:ok, %{status_code: 400}} ->
+        {:error, :bad_request}
       {:error, _} ->
         {:error, :service_error}
     end

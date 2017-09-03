@@ -4,9 +4,11 @@ defmodule FootballBuddyWeb.ErrorView do
   def render("404.json", _assigns) do
     %{errors: %{detail: "Page not found"}}
   end
-
   def render("500.json", _assigns) do
     %{errors: %{detail: "Internal server error"}}
+  end
+  def render("503.json", _assigns) do
+    %{errors: %{detail: "Something went wrong with the external service"}}
   end
 
   # In case no render clause matches or no

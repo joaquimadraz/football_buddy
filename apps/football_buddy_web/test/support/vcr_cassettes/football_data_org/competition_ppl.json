@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.football-data.org/v1/competitions/unknown?X-Response-Control=minified"
+    },
+    "response": {
+      "body": "{\"error\":\"Parameter 'id' is expected to be an integer in a specified range.\"}",
+      "headers": {
+        "Server": "nginx/1.6.2",
+        "Date": "Sun, 03 Sep 2017 16:04:09 GMT",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "X-Application-Context": "application:production",
+        "X-Requests-Available": "94",
+        "X-RequestCounter-Reset": "85632",
+        "X-Authenticated-Client": "anonymous",
+        "X-API-Version": "v1",
+        "X-Response-Control": "full"
+      },
+      "status_code": 400,
+      "type": "ok"
+    }
+  }
+]
